@@ -55,6 +55,16 @@ describe('query', () => {
         ).to.eql(
             'nimo'
         )
+        expect(
+            jsonModif.query('class.user.demo', data)
+        ).to.eql(
+            undefined
+        )
+        expect(
+            jsonModif.query('class.user.demo.some', data)
+        ).to.eql(
+            undefined
+        )
     })
     it('object.array.object', () => {
         expect(

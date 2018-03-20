@@ -34,6 +34,11 @@ var data = {
             },
             {
                 id: 'bh4ebrbvdsdqw',
+                name: 'nimo',
+                age: 24
+            },
+            {
+                id: 'b4wg4w3g3g434g',
                 name: 'nimo'
             },
             {
@@ -75,6 +80,11 @@ describe('query', () => {
             jsonModif.query('class.list[{id:"egu8y23hgf3wef"}].data.array[{id:"ashfuewgfwef"}].name', data)
         ).to.eql(
             'Jack'
+        )
+        expect(
+            jsonModif.query('class.list[{name:"nimo", age: 24}].id', data)
+        ).to.eql(
+            'bh4ebrbvdsdqw'
         )
     })
 

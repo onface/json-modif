@@ -97,6 +97,17 @@ describe('query', () => {
             'bh4ebrbvdsdqw'
         )
     })
+    it('location object.array[query].object', () => {
+        expect(
+            JSON.stringify(
+                jsonModif.query('class.list[{id:"egu8y23hgf3wef"}].data.array[{id:"ashfuewgfwef"}].name', data, {
+                    complete: true
+                })
+            )
+        ).to.eql(
+            JSON.stringify({location: ['class', 'list', 0, 'data', 'array', 0, 'name'], value: 'Jack'})
+        )
+    })
 
 
 })

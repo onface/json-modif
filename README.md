@@ -35,8 +35,8 @@
                 <div class="face-one-feature-item">
                     <img src="./doc/theme/media/browser.svg" alt="" class="face-one-feature-item-photo">
                     <br />
-                    <div class="face-one-feature-item-label">用户体验</div>
-                    <div class="face-one-feature-item-desc">界面细致、即时反馈，更好的用户体验</div>
+                    <div class="face-one-feature-item-label">接口易用</div>
+                    <div class="face-one-feature-item-desc">结构化配置，<code>add</code> <code>delete</code> <code>query</code> <code>modif</code></div>
                 </div>
             </td>
             <td align="center" >

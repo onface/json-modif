@@ -9,7 +9,6 @@ describe('create', () => {
             { class: { user: { title: 'nimo' } } }
         )
     })
-
     it('object.array.object', () => {
         expect(
             JSON.stringify(jsonModif.create('class.user[0].title', 'nimo'))
@@ -33,5 +32,4 @@ describe('create', () => {
             )
         )
     })
-
 })

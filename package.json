@@ -18,7 +18,7 @@
     "$username": "onface",
     "$repository": "json-modif",
     "dependencies": {
-        "extend": "^3.0.1"
+        "safe-extend": "^3.0.3"
     },
     "devDependencies": {
         "babel": "^6.23.0",
@@ -40,6 +40,7 @@
         "enzyme": "^3.3.0",
         "enzyme-adapter-react-16": "^1.1.1",
         "express": "^4.16.2",
+        "extend": "^3.0.1",
         "file-loader": "^1.1.6",
         "fis-parser-less-2.x": "^0.1.4",
         "fis3-hook-relative": "^2.0.1",

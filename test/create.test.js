@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import jsonModif from "../lib/index"
-import extend from "extend"
+import extend from "safe-extend"
 describe('create', () => {
     it('object', () => {
         expect(

@@ -108,6 +108,17 @@ describe('query', () => {
             '{"location":"class.list[0].data.array[0].name","locationArray":["class","list[0]","data","array[0]","name"],"value":"Jack"}'
         )
     })
-
-
+    it('query all', () => {
+        expect(
+            JSON.stringify(
+                jsonModif.query('class.list[{name:"nimo"}]', data, {
+                    all: true
+                })
+            )
+        ).to.eql(
+            JSON.stringify(
+                [{"id":"bh4ebrbvdsdqw","name":"nimo","age":24},{"id":"b4wg4w3g3g434g","name":"nimo"}]
+            )
+        )
+    })
 })

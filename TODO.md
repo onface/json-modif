@@ -1,3 +1,4 @@
 # TODO
 
-1. design `add` `modif` `delete`
+1. queryAll
+2. delete

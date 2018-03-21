@@ -12,7 +12,7 @@ describe('modif', () => {
         }
         expect(
             JSON.stringify(
-                jsonModif.modif('class.user', data, {
+                jsonModif.change('class.user', data, {
                     tag: 'man'
                 })
             )
@@ -37,7 +37,7 @@ describe('modif', () => {
         }
         expect(
             JSON.stringify(
-                jsonModif.modif('class.user.list[0]', data, {
+                jsonModif.change('class.user.list[0]', data, {
                     tag: 'man'
                 })
             )
@@ -62,7 +62,7 @@ describe('modif', () => {
         }
         expect(
             JSON.stringify(
-                jsonModif.modif('class.user.list[{id: "dwgvwgvwef"}]', data, {
+                jsonModif.change('class.user.list[{id: "dwgvwgvwef"}]', data, {
                     tag: 'man'
                 })
             )
@@ -92,7 +92,7 @@ describe('modif', () => {
         }
         expect(
             JSON.stringify(
-                jsonModif.modif('class.user.list[{id: "dwgvwgvwef"}].list[0]', data, {
+                jsonModif.change('class.user.list[{id: "dwgvwgvwef"}].list[0]', data, {
                     tag: 'man'
                 })
             )
@@ -122,7 +122,7 @@ describe('modif', () => {
         }
         expect(
             JSON.stringify(
-                jsonModif.modif('class.user.list[{id: "dwgvwgvwef"}].list[{id: "asdasd"}]', data, {
+                jsonModif.change('class.user.list[{id: "dwgvwgvwef"}].list[{id: "asdasd"}]', data, {
                     tag: 'man'
                 })
             )

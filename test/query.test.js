@@ -105,7 +105,7 @@ describe('query', () => {
                 })
             )
         ).to.eql(
-            JSON.stringify({location: ['class', 'list', 0, 'data', 'array', 0, 'name'], value: 'Jack'})
+            '{"location":"class.list[0].data.array[0].name","locationArray":["class","list[0]","data","array[0]","name"],"value":"Jack"}'
         )
     })
 

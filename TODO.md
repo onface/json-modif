@@ -1,4 +1,4 @@
 # TODO
 
-1. queryAll
-2. delete
+1. rewrite queryAll
+2. filter

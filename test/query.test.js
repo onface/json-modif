@@ -1,6 +1,7 @@
 import { expect } from 'chai';
 import jsonModif from "../lib/index"
 import extend from "safe-extend"
+import flatten from "flatten"
 var data = {
     class: {
         user: {
@@ -35,7 +36,23 @@ var data = {
             {
                 id: 'bh4ebrbvdsdqw',
                 name: 'nimo',
-                age: 24
+                age: 24,
+                data: {
+                    array: [
+                        {
+                            id: 'egvwegewfwd',
+                            name: 'Jack'
+                        },
+                        {
+                            id: 'safwegweg',
+                            name: 'Jack'
+                        },
+                        {
+                            id: 'gw34gobgjieuwcv',
+                            name: 'Jack'
+                        }
+                    ]
+                }
             },
             {
                 id: 'b4wg4w3g3g434g',
@@ -97,7 +114,7 @@ describe('query', () => {
             'bh4ebrbvdsdqw'
         )
     })
-    it('location object.array[query].object', () => {
+    it('location object.array[query].object 1', () => {
         expect(
             JSON.stringify(
                 jsonModif.query('class.list[{id:"egu8y23hgf3wef"}].data.array[{id:"ashfuewgfwef"}].name', data, {
@@ -105,7 +122,18 @@ describe('query', () => {
                 })
             )
         ).to.eql(
-            '{"location":"class.list[0].data.array[0].name","locationArray":["class","list[0]","data","array[0]","name"],"value":"Jack"}'
+             '{"location":["class","list[0]","data","array[0]","name"],"value":"Jack"}'
+        )
+    })
+    it('location object.array[query].object 2', () => {
+        expect(
+            JSON.stringify(
+                jsonModif.query('class.list[{id:"bh4ebrbvdsdqw"}].data.array[{id:"gw34gobgjieuwcv"}].name', data, {
+                    complete: true
+                })
+            )
+        ).to.eql(
+            '{"location":["class","list[1]","data","array[2]","name"],"value":"Jack"}'
         )
     })
     it('query all', () => {
@@ -117,8 +145,20 @@ describe('query', () => {
             )
         ).to.eql(
             JSON.stringify(
-                [{"id":"bh4ebrbvdsdqw","name":"nimo","age":24},{"id":"b4wg4w3g3g434g","name":"nimo"}]
+                [{"id":"bh4ebrbvdsdqw","name":"nimo","age":24,"data":{"array":[{"id":"egvwegewfwd","name":"Jack"},{"id":"safwegweg","name":"Jack"},{"id":"gw34gobgjieuwcv","name":"Jack"}]}},{"id":"b4wg4w3g3g434g","name":"nimo"}]
             )
         )
+    })
+    it('query all complete', () => {
+        expect(
+            JSON.stringify(
+                jsonModif.query('class.list[{name:"nimo"}]', data, {
+                    all: true,
+                    complete: true
+                })
+            )
+        ).to.eql(
+            '{"location":[["class","list[1]"],["class","list[2]"]],"value":[{"id":"bh4ebrbvdsdqw","name":"nimo","age":24,"data":{"array":[{"id":"egvwegewfwd","name":"Jack"},{"id":"safwegweg","name":"Jack"},{"id":"gw34gobgjieuwcv","name":"Jack"}]}},{"id":"b4wg4w3g3g434g","name":"nimo"}]}'
+         )
     })
 })

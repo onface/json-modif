@@ -114,9 +114,18 @@ describe('query', () => {
             )
         )
     })
-    // it('query all empy', () => {
-    //
-    // })
+    it('query all empy', () => {
+        expect(
+            jsonModif.query('user.list[{id:1}]', {}, {all: true})
+        ).to.eql(
+            []
+        )
+        expect(
+            jsonModif.query('user.list[{id:1}]', {}, {all: true, complete: true})
+        ).to.eql(
+            []
+        )
+    })
     it('query all multi [JSON]', () => {
         var data = {
             list: [
@@ -181,5 +190,54 @@ describe('query', () => {
                 }
             ]
         }
+        expect(
+            JSON.stringify(
+                jsonModif.query('list[{type: "read"}].comment[{name: "anonymity"}].skills[{html:true}]', data, {
+                    all: true,
+                    complete: true
+                })
+            )
+        ).to.eql(
+            JSON.stringify(
+                [
+                    {
+                        "location": [
+                            "list[0]",
+                            "comment[0]",
+                            "skills[0]"
+                        ],
+                        "value": {
+                            "id": "1-1-1",
+                            "html": true,
+                            "css": false
+                        }
+                    },
+                    {
+                        "location": [
+                            "list[0]",
+                            "comment[0]",
+                            "skills[2]"
+                        ],
+                        "value": {
+                            "id": "1-1-3",
+                            "html": true,
+                            "css": false
+                        }
+                    },
+                    {
+                        "location": [
+                            "list[3]",
+                            "comment[0]",
+                            "skills[2]"
+                        ],
+                        "value": {
+                            "id": "3-1-2",
+                            "html": true,
+                            "css": true
+                        }
+                    }
+                ]
+            )
+        )
     })
 })

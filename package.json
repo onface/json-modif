@@ -18,6 +18,7 @@
     "$username": "onface",
     "$repository": "json-modif",
     "dependencies": {
+        "array-flatten": "^2.1.1",
         "safe-extend": "^3.0.3"
     },
     "devDependencies": {

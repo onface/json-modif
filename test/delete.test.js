@@ -27,4 +27,82 @@ describe('delete', () => {
             )
         )
     })
+    it('array', () => {
+        expect(
+            JSON.stringify(
+                jsonModif.delete(
+                    'list',
+                    {
+                        list: [
+                            1,2
+                        ],
+                        age: 1
+                    }
+                )
+            )
+        ).to.eql(
+            '{"age":1}'
+        )
+
+        expect(
+            JSON.stringify(
+                jsonModif.delete(
+                    'list[2]',
+                    {
+                        list: [
+                            1,2,3,4
+                        ]
+                    }
+                )
+            )
+        ).to.eql(
+            JSON.stringify(
+                {
+                    list: [
+                        1,2,4
+                    ]
+                }
+            )
+        )
+        expect(
+            JSON.stringify(
+                jsonModif.delete(
+                    'list[1][3]',
+                    {
+                        list: [
+                            1,
+                            [
+                                1,2,3,4
+                            ],
+                            2
+                        ]
+                    }
+                )
+            )
+        ).to.eql(
+            JSON.stringify(
+                {"list":[1,[1,2,3],2]}
+            )
+        )
+        expect(
+            JSON.stringify(
+                jsonModif.delete(
+                    'list[1][3][1]',
+                    {
+                        list: [
+                            1,
+                            [
+                                1,2,3,[1,2,3]
+                            ],
+                            2
+                        ]
+                    }
+                )
+            )
+        ).to.eql(
+            JSON.stringify(
+                {"list":[1,[1,2,3,[1,3]],2]}
+            )
+        )
+    })
 })

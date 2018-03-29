@@ -105,4 +105,34 @@ describe('delete', () => {
             )
         )
     })
+    it('list[JSON]', function (){
+        expect(
+            JSON.stringify(jsonModif.delete(
+                'list[{name: "game"}]',
+                {
+                    list: [
+                        {
+                            name: 'game'
+                        },
+                        {
+                            name: 'name'
+                        },
+                        {
+                            name: 'game'
+                        }
+                    ]
+                }
+            ))
+        ).to.eql(
+            JSON.stringify(
+                {
+                    list: [
+                        {
+                            name: 'name'
+                        }
+                    ]
+                }
+            )
+        )
+    })
 })

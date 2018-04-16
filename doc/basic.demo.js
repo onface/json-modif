@@ -1,2 +1,6 @@
 var jsonModif = require('json-modif')
-jsonModif.create('class.user.title', 'nimo')
+console.log(
+    JSON.stringify(
+        jsonModif.create('class.user.title', 'nimo')
+    )
+)

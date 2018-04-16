@@ -1,6 +1,5 @@
 import { expect } from 'chai';
 import jsonModif from "../lib/index"
-
 describe('delete', () => {
     it('object', () => {
         var data = {
@@ -106,22 +105,6 @@ describe('delete', () => {
         )
     })
     it('list[JSON]', function (){
-        // console.log(jsonModif.delete(
-        //     'list[{name: "game"}]',
-        //     {
-        //         list: [
-        //             {
-        //                 name: 'game'
-        //             },
-        //             {
-        //                 name: 'name'
-        //             },
-        //             {
-        //                 name: 'game'
-        //             }
-        //         ]
-        //     }
-        // ))
         expect(
             JSON.stringify(jsonModif.delete(
                 'list[{name: "game"}]',

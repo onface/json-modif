@@ -19,6 +19,7 @@
     "$repository": "json-modif",
     "dependencies": {
         "array-flatten": "^2.1.1",
+        "delay-console": "^0.4.0",
         "safe-extend": "^3.0.3"
     },
     "devDependencies": {

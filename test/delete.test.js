@@ -120,6 +120,40 @@ describe('delete', () => {
                             name: 'game'
                         }
                     ]
+                },
+                {
+                    all: false
+                }
+            ))
+        ).to.eql(
+            JSON.stringify(
+                {
+                    list: [
+                        {
+                            name: 'name'
+                        },
+                        {
+                            name: 'game'
+                        }
+                    ]
+                }
+            )
+        )
+        expect(
+            JSON.stringify(jsonModif.delete(
+                'list[{name: "game"}]',
+                {
+                    list: [
+                        {
+                            name: 'game'
+                        },
+                        {
+                            name: 'name'
+                        },
+                        {
+                            name: 'game'
+                        }
+                    ]
                 }
             ))
         ).to.eql(

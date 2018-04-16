@@ -22,6 +22,31 @@ describe('change', () => {
             )
         )
     })
+    it('object[JSON]', () => {
+        let data = {
+            list: [
+                {
+                    name: 'nimo',
+                    age: 1
+                },
+                {
+                    name: 'nico',
+                    age: 2
+                },
+                {
+                    name: 'nimo',
+                    age: 3
+                }
+            ]
+        }
+        expect(
+            JSON.stringify(
+                jsonModif.change('list[{name: "nimo"}]', data, {demo: '1'}, {all: true})
+            )
+        ).to.eql(
+            '{"list":[{"name":"nimo","age":1,"demo":"1"},{"name":"nico","age":2},{"name":"nimo","age":3,"demo":"1"}]}'
+        )
+    })
     it('object.array[0]', () => {
         let data = {
             class: {

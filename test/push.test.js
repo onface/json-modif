@@ -24,6 +24,39 @@ describe('push', () => {
             )
         )
     })
+    it('object[JSON]', () => {
+        let data = {
+            list: [
+                {
+                    name: 'nimo',
+                    arr:[1]
+                },
+                {
+                    name: 'nimo',
+                    arr:[1,2]
+                },
+                {
+                    name: 'jack'
+                },
+                {
+                    name: 'nimo',
+                    arr:[1,2,3]
+                },
+                {
+                    name: 'tim'
+                }
+            ]
+        }
+        expect(
+            JSON.stringify(
+                jsonModif.push('list[{name:"nimo"}].arr', data, 'a', {all: true})
+            )
+        ).to.eql(
+            JSON.stringify(
+                {"list":[{"name":"nimo","arr":[1,"a"]},{"name":"nimo","arr":[1,2,"a"]},{"name":"jack"},{"name":"nimo","arr":[1,2,3,"a"]},{"name":"tim"}]}
+            )
+        )
+    })
     it('array[0]', () => {
         let data = {
             class: {

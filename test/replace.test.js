@@ -72,6 +72,35 @@ describe('replace', () => {
             )
         )
     })
+    it('object.array[{id}] all', () => {
+        let data = {
+            list: [
+                {
+                    id: 'a',
+                    some: 'abc'
+                },
+                {
+                    id: 'asdasd',
+                    some: 'wrgvwef'
+                },
+                {
+                    id: 'a',
+                    some: 'abc'
+                },
+            ]
+        }
+        expect(
+            JSON.stringify(
+                jsonModif.replace('list[{id:"a"}]', data, {
+                    tag: 'man'
+                }, {all: true})
+            )
+        ).to.eql(
+            JSON.stringify(
+                {"list":[{"tag":"man"},{"id":"asdasd","some":"wrgvwef"}, {"tag":"man"}]}
+            )
+        )
+    })
     it('query&replace object.array[{id}]', () => {
         let data = {
             list: [

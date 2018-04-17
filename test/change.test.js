@@ -12,9 +12,9 @@ describe('change', () => {
         }
         expect(
             JSON.stringify(
-                jsonModif.change('class.user', data, {
+                jsonModif.change('class.user', {
                     tag: 'man'
-                })
+                }, data)
             )
         ).to.eql(
             JSON.stringify(
@@ -62,14 +62,14 @@ describe('change', () => {
         }
         expect(
             JSON.stringify(
-                jsonModif.change('list[{name: "nimo"}]', data, {demo: '1'})
+                jsonModif.change('list[{name: "nimo"}]', {demo: '1'}, data)
             )
         ).to.eql(
             '{"list":[{"name":"nimo","age":1,"demo":"1"},{"name":"nico","age":2},{"name":"nimo","age":3,"demo":"1"}]}'
         )
         expect(
             JSON.stringify(
-                jsonModif.change('list[{name: "nimo"}]', data, {demo: '1'}, {all: false})
+                jsonModif.change('list[{name: "nimo"}]', {demo: '1'}, data, {all: false})
             )
         ).to.eql(
             '{"list":[{"name":"nimo","age":1,"demo":"1"},{"name":"nico","age":2},{"name":"nimo","age":3}]}'
@@ -90,9 +90,9 @@ describe('change', () => {
         }
         expect(
             JSON.stringify(
-                jsonModif.change('class.user.list[0]', data, {
+                jsonModif.change('class.user.list[0]', {
                     tag: 'man'
-                })
+                }, data)
             )
         ).to.eql(
             '{"class":{"user":{"name":"nimo","list":[{"a":"1","tag":"man"}]}}}'
@@ -115,9 +115,9 @@ describe('change', () => {
         }
         expect(
             JSON.stringify(
-                jsonModif.change('class.user.list[{id: "dwgvwgvwef"}]', data, {
+                jsonModif.change('class.user.list[{id: "dwgvwgvwef"}]', {
                     tag: 'man'
-                })
+                }, data)
             )
         ).to.eql(
             '{"class":{"user":{"name":"nimo","list":["anc",{"id":"dwgvwgvwef","a":"1","tag":"man"}]}}}'
@@ -145,9 +145,9 @@ describe('change', () => {
         }
         expect(
             JSON.stringify(
-                jsonModif.change('class.user.list[{id: "dwgvwgvwef"}].list[0]', data, {
+                jsonModif.change('class.user.list[{id: "dwgvwgvwef"}].list[0]', {
                     tag: 'man'
-                })
+                }, data)
             )
         ).to.eql(
             '{"class":{"user":{"name":"nimo","list":["anc",{"id":"dwgvwgvwef","a":"1","list":[{"id":"asdasd","tag":"man"}]}]}}}'
@@ -175,9 +175,9 @@ describe('change', () => {
         }
         expect(
             JSON.stringify(
-                jsonModif.change('class.user.list[{id: "dwgvwgvwef"}].list[{id: "asdasd"}]', data, {
+                jsonModif.change('class.user.list[{id: "dwgvwgvwef"}].list[{id: "asdasd"}]', {
                     tag: 'man'
-                })
+                }, data)
             )
         ).to.eql(
             '{"class":{"user":{"name":"nimo","list":["anc",{"id":"dwgvwgvwef","a":"1","list":[{"id":"asdasd","tag":"man"}]}]}}}'

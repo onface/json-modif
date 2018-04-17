@@ -14,9 +14,9 @@ describe('push', () => {
         }
         expect(
             JSON.stringify(
-                jsonModif.push('class.user.list', data, {
+                jsonModif.push('class.user.list', {
                     tag: 'man'
-                })
+                }, data)
             )
         ).to.eql(
             JSON.stringify(
@@ -49,7 +49,7 @@ describe('push', () => {
         }
         expect(
             JSON.stringify(
-                jsonModif.push('list[{name:"nimo"}].arr', data, 'a')
+                jsonModif.push('list[{name:"nimo"}].arr', 'a', data)
             )
         ).to.eql(
             JSON.stringify(
@@ -58,7 +58,7 @@ describe('push', () => {
         )
         expect(
             JSON.stringify(
-                jsonModif.push('list[{name:"nimo"}].arr', data, 'a', {all: false})
+                jsonModif.push('list[{name:"nimo"}].arr', 'a', data, {all: false})
             )
         ).to.eql(
             JSON.stringify(
@@ -80,9 +80,9 @@ describe('push', () => {
         }
         expect(
             JSON.stringify(
-                jsonModif.push('class.user.list[0]', data, {
+                jsonModif.push('class.user.list[0]', {
                     tag: 'man'
-                })
+                }, data)
             )
         ).to.eql(
             JSON.stringify(

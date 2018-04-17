@@ -12,9 +12,9 @@ describe('replace', () => {
         }
         expect(
             JSON.stringify(
-                jsonModif.replace('class.user', data, {
+                jsonModif.replace('class.user', {
                     tag: 'man'
-                })
+                }, data)
             )
         ).to.eql(
             JSON.stringify(
@@ -37,9 +37,9 @@ describe('replace', () => {
         }
         expect(
             JSON.stringify(
-                jsonModif.replace('class.user.list[0]', data, {
+                jsonModif.replace('class.user.list[0]', {
                     tag: 'man'
-                })
+                }, data)
             )
         ).to.eql(
             JSON.stringify(
@@ -62,9 +62,9 @@ describe('replace', () => {
         }
         expect(
             JSON.stringify(
-                jsonModif.replace('list[{id:"a"}]', data, {
+                jsonModif.replace('list[{id:"a"}]', {
                     tag: 'man'
-                })
+                }, data)
             )
         ).to.eql(
             JSON.stringify(
@@ -91,9 +91,9 @@ describe('replace', () => {
         }
         expect(
             JSON.stringify(
-                jsonModif.replace('list[{id:"a"}]', data, {
+                jsonModif.replace('list[{id:"a"}]', {
                     tag: 'man'
-                })
+                }, data)
             )
         ).to.eql(
             JSON.stringify(
@@ -102,9 +102,9 @@ describe('replace', () => {
         )
         expect(
             JSON.stringify(
-                jsonModif.replace('list[{id:"a"}]', data, {
+                jsonModif.replace('list[{id:"a"}]', {
                     tag: 'man'
-                }, {all: false})
+                }, data, {all: false})
             )
         ).to.eql(
             JSON.stringify(
@@ -133,7 +133,7 @@ describe('replace', () => {
         target.demo = 'abc'
         expect(
             JSON.stringify(
-                jsonModif.replace(query, data, target)
+                jsonModif.replace(query, target, data)
             )
         ).to.eql(
             JSON.stringify(

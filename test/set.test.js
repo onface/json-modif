@@ -8,7 +8,7 @@ describe('set', () => {
         }
         expect(
             JSON.stringify(
-                jsonModif.set('one', data, '123')
+                jsonModif.set('one', '123', data)
             )
         ).to.eql(
             JSON.stringify(
@@ -24,7 +24,7 @@ describe('set', () => {
         }
         expect(
             JSON.stringify(
-                jsonModif.set('one', data, {a:1})
+                jsonModif.set('one', {a:1}, data)
             )
         ).to.eql(
             JSON.stringify(
@@ -40,7 +40,7 @@ describe('set', () => {
         }
         expect(
             JSON.stringify(
-                jsonModif.set('one.some[1]', data, 'a')
+                jsonModif.set('one.some[1]', 'a', data)
             )
         ).to.eql(
             JSON.stringify(
@@ -53,7 +53,7 @@ describe('set', () => {
         )
         expect(
             JSON.stringify(
-                jsonModif.set('one.some[1]', data, {a:1})
+                jsonModif.set('one.some[1]', {a:1}, data)
             )
         ).to.eql(
             JSON.stringify(
@@ -80,7 +80,7 @@ describe('set', () => {
         }
         expect(
             JSON.stringify(
-                jsonModif.set('list[{name: "nimo"}]', data, {a:1}))
+                jsonModif.set('list[{name: "nimo"}]', {a:1}, data))
         ).to.eql(
             JSON.stringify(
                 {
@@ -111,7 +111,7 @@ describe('set', () => {
         }
         expect(
             JSON.stringify(
-                jsonModif.set('list[{name: "nimo"}]', data, {a:1}, {all:true}))
+                jsonModif.set('list[{name: "nimo"}]', {a:1}, data, {all:true}))
         ).to.eql(
             JSON.stringify(
                 {

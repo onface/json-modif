@@ -49,11 +49,20 @@ describe('unshift', () => {
         }
         expect(
             JSON.stringify(
-                jsonModif.unshift('list[{name:"nimo"}].arr', data, 'a', {all: true})
+                jsonModif.unshift('list[{name:"nimo"}].arr', data, 'a')
             )
         ).to.eql(
             JSON.stringify(
                 {"list":[{"name":"nimo","arr":["a",1]},{"name":"nimo","arr":["a",1,2]},{"name":"jack"},{"name":"nimo","arr":["a",1,2,3]},{"name":"tim"}]}
+            )
+        )
+        expect(
+            JSON.stringify(
+                jsonModif.unshift('list[{name:"nimo"}].arr', data, 'a', {all: false})
+            )
+        ).to.eql(
+            JSON.stringify(
+                {"list":[{"name":"nimo","arr":["a",1]},{"name":"nimo","arr":[1,2]},{"name":"jack"},{"name":"nimo","arr":[1,2,3]},{"name":"tim"}]}
             )
         )
     })

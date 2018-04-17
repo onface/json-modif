@@ -93,11 +93,25 @@ describe('replace', () => {
             JSON.stringify(
                 jsonModif.replace('list[{id:"a"}]', data, {
                     tag: 'man'
-                }, {all: true})
+                })
             )
         ).to.eql(
             JSON.stringify(
                 {"list":[{"tag":"man"},{"id":"asdasd","some":"wrgvwef"}, {"tag":"man"}]}
+            )
+        )
+        expect(
+            JSON.stringify(
+                jsonModif.replace('list[{id:"a"}]', data, {
+                    tag: 'man'
+                }, {all: false})
+            )
+        ).to.eql(
+            JSON.stringify(
+                {"list":[{"tag":"man"},{"id":"asdasd","some":"wrgvwef"}, {
+                    id: 'a',
+                    some: 'abc'
+                }]}
             )
         )
     })

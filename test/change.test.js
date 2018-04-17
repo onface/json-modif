@@ -22,6 +22,27 @@ describe('change', () => {
             )
         )
     })
+    // it('function', () => {
+    //     let data = {
+    //         class: {
+    //             user: {
+    //                 name: 'nimo'
+    //             }
+    //         }
+    //     }
+    //     expect(
+    //         JSON.stringify(
+    //             jsonModif.change('class.user', data, function (data) {
+    //                 data.name = data.name  + 'abc'
+    //                 return data
+    //             })
+    //         )
+    //     ).to.eql(
+    //         JSON.stringify(
+    //             {"class":{"user":{"name":"nimoabc"}}}
+    //         )
+    //     )
+    // })
     it('object[JSON]', () => {
         let data = {
             list: [
@@ -41,10 +62,17 @@ describe('change', () => {
         }
         expect(
             JSON.stringify(
-                jsonModif.change('list[{name: "nimo"}]', data, {demo: '1'}, {all: true})
+                jsonModif.change('list[{name: "nimo"}]', data, {demo: '1'})
             )
         ).to.eql(
             '{"list":[{"name":"nimo","age":1,"demo":"1"},{"name":"nico","age":2},{"name":"nimo","age":3,"demo":"1"}]}'
+        )
+        expect(
+            JSON.stringify(
+                jsonModif.change('list[{name: "nimo"}]', data, {demo: '1'}, {all: false})
+            )
+        ).to.eql(
+            '{"list":[{"name":"nimo","age":1,"demo":"1"},{"name":"nico","age":2},{"name":"nimo","age":3}]}'
         )
     })
     it('object.array[0]', () => {

@@ -111,7 +111,7 @@ describe('set', () => {
         }
         expect(
             JSON.stringify(
-                jsonModif.set('list[{name: "nimo"}]', {a:1}, data, {all:true}))
+                jsonModif.set('list[{name: "nimo"}]', {a:1}, data))
         ).to.eql(
             JSON.stringify(
                 {
@@ -119,6 +119,20 @@ describe('set', () => {
                         {"name":"nimo","age":"12","a":1},
                         {"name":"nico","age":"23"},
                         {"name":"nimo","age":"12","a":1}
+                    ]
+                }
+            )
+        )
+        expect(
+            JSON.stringify(
+                jsonModif.set('list[{name: "nimo"}]', {a:1}, data, {all:false}))
+        ).to.eql(
+            JSON.stringify(
+                {
+                    "list": [
+                        {"name":"nimo","age":"12","a":1},
+                        {"name":"nico","age":"23"},
+                        {"name":"nimo","age":"12"}
                     ]
                 }
             )

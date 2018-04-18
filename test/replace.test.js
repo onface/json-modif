@@ -72,6 +72,34 @@ describe('replace', () => {
             )
         )
     })
+    it('function', () => {
+        let data = {
+            list: [
+                {name:'nimo', age:12},
+                {name:'nico'},
+                {name:'nimo',age:23}
+            ]
+        }
+        expect(
+            JSON.stringify(
+                jsonModif.replace('list[{name:"nimo"}]', function (data, index) {
+                    return {
+                        age: data.age  + '-' + index
+                    }
+                }, data)
+            )
+        ).to.eql(
+            JSON.stringify(
+                {
+                    "list":[
+                        {"age":"12-0"},
+                        {"name":"nico"},
+                        {"age":"23-2"}
+                    ]
+                }
+            )
+        )
+    })
     it('object.array[{id}] all', () => {
         let data = {
             list: [

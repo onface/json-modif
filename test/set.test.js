@@ -92,6 +92,37 @@ describe('set', () => {
             )
         )
     })
+    it('object.array[JSON] function', () => {
+        let data = {
+            list: [
+                {
+                    name: 'nimo',
+                    age: '12'
+                },
+                {
+                    name: 'nimo',
+                    age: '23'
+                }
+            ]
+        }
+        expect(
+            JSON.stringify(
+                jsonModif.set('list[{name: "nimo"}]', function (value, index) {
+                    return {
+                        age: value.age + '-' + index
+                    }
+                }, data))
+        ).to.eql(
+            JSON.stringify(
+                {
+                    "list": [
+                        {"name":"nimo","age":"12-0"},
+                        {"name":"nimo","age":"23-1"}
+                    ]
+                }
+            )
+        )
+    })
     it('object.array[JSON] all', () => {
         let data = {
             list: [
@@ -138,5 +169,4 @@ describe('set', () => {
             )
         )
     })
-
 })

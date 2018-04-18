@@ -22,27 +22,34 @@ describe('change', () => {
             )
         )
     })
-    // it('function', () => {
-    //     let data = {
-    //         class: {
-    //             user: {
-    //                 name: 'nimo'
-    //             }
-    //         }
-    //     }
-    //     expect(
-    //         JSON.stringify(
-    //             jsonModif.change('class.user', data, function (data) {
-    //                 data.name = data.name  + 'abc'
-    //                 return data
-    //             })
-    //         )
-    //     ).to.eql(
-    //         JSON.stringify(
-    //             {"class":{"user":{"name":"nimoabc"}}}
-    //         )
-    //     )
-    // })
+    it('function', () => {
+        let data = {
+            list: [
+                {name:'nimo', age:12},
+                {name:'nico'},
+                {name:'nimo',age:23}
+            ]
+        }
+        expect(
+            JSON.stringify(
+                jsonModif.change('list[{name:"nimo"}]', function (data, index) {
+                    return {
+                        age: data.age  + '-' + index
+                    }
+                }, data)
+            )
+        ).to.eql(
+            JSON.stringify(
+                {
+                    "list":[
+                        {"name":"nimo","age":"12-0"},
+                        {"name":"nico"},
+                        {"name":"nimo","age":"23-2"}
+                    ]
+                }
+            )
+        )
+    })
     it('object[JSON]', () => {
         let data = {
             list: [

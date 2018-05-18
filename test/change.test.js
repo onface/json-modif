@@ -4,6 +4,30 @@ import extend from "safe-extend"
 describe('change', () => {
     it('object', () => {
         let data = {
+            user: {
+
+            }
+        }
+        expect(
+            JSON.stringify(
+                jsonModif.change('user', {
+                    tag: 'man',
+                    name: 'nimo'
+                }, data)
+            )
+        ).to.eql(
+            JSON.stringify(
+                {
+                    user: {
+                        tag: 'man',
+                        name: 'nimo'
+                    }
+                }
+            )
+        )
+    })
+    it('object', () => {
+        let data = {
             class: {
                 user: {
                     name: 'nimo'

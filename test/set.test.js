@@ -16,6 +16,20 @@ describe('set', () => {
             )
         )
     })
+    it('undefined string', () => {
+        let data = {
+
+        }
+        expect(
+            JSON.stringify(
+                jsonModif.set('one', '123', data)
+            )
+        ).to.eql(
+            JSON.stringify(
+                {one: '123'}
+            )
+        )
+    })
     it('object', () => {
         let data = {
             one: {
@@ -24,11 +38,11 @@ describe('set', () => {
         }
         expect(
             JSON.stringify(
-                jsonModif.set('one', {a:1}, data)
+                jsonModif.set('one', {a:1,b:2}, data)
             )
         ).to.eql(
             JSON.stringify(
-                {one: {name: 'nimo', a:1}}
+                {one: {name: 'nimo', a:1,b:2}}
             )
         )
     })
